@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="modif.css">
+    <title>Catalogue</title>
+</head>
+<body>
+
+<!-- Mode sombre / clair -->
+<div class="ui-switch">
+  <input type="checkbox" id="theme-toggle">
+  <label for="theme-toggle" class="slider">
+    <span class="circle"></span>
+  </label>
+</div>
+
+<div class="container">
+  <h2>Modifier un livre</h2>
+
+  <!-- Recherche par référence -->
+  <form id="searchForm" method="GET" action="modif.php">
+    <label for="search-ref">Référence du livre à modifier</label>
+    <input type="text" id="search-ref" name="search-ref" placeholder="Ex : REF-1234" required>
+    <button type="submit">Rechercher</button>
+  </form>
+
+  <!-- Message d’erreur (par défaut caché) -->
+  <div id="error-message" style="display:none; color:red; margin-top: 10px;">
+    Livre non trouvé.
+  </div>
+
+  <!-- Formulaire de modification (par défaut caché) -->
+  <form id="bookForm" method="POST" enctype="multipart/form-data" style="display: none;">
+    <label for="ref">Référence du livre</label>
+    <input type="text" id="ref" name="ref" placeholder="Ex : REF-1234" required readonly>
+
+    <label for="title">Titre du livre</label>
+    <input type="text" id="title" name="title" placeholder="Ex : L'Étranger" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Entrez une description détaillée..." rows="4" required></textarea>
+
+    <label for="price">Prix (dt)</label>
+    <input type="number" id="price" name="price" placeholder="Ex : 27.90" step="0.01" required>
+
+    <label for="quantity">Quantité</label>
+    <input type="number" id="quantity" name="quantity" min="1" placeholder="Ex : 25" required>
+
+    <label for="etat">État</label>
+    <select id="etat" name="etat">
+      <option value="stock">En stock</option>
+      <option value="hors-stock">Hors stock</option>
+    </select>
+
+    <label for="image">Image de couverture</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+    <button type="submit">Modifier le livre</button>
+  </form>
+  
+  <div class="preview" id="preview"></div>
+</div>
+
+<script src="modif.js"></script>
+
+</body>
+</html>

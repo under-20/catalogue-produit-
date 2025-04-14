@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion Livres</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>Gestion des Livres</header>
+
+  <h2>Liste des Livres</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Réf</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>État</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($livres as $livre): ?>
+        <tr>
+          <td><?= htmlspecialchars($livre['id']) ?></td>
+          <td><?= htmlspecialchars($livre['ref']) ?></td>
+          <td><?= htmlspecialchars($livre['titre']) ?></td>
+          <td><?= htmlspecialchars($livre['description']) ?></td>
+          <td><?= htmlspecialchars($livre['prix']) ?></td>
+          <td><?= htmlspecialchars($livre['quantite']) ?></td>
+          <td><?= htmlspecialchars($livre['etat']) ?></td>
+          <td>
+            <a href="?delete=<?= $livre['id'] ?>" onclick="return confirm('Supprimer ce livre ?')">🗑️</a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+
+</body>
+</html>
